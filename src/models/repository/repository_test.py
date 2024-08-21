@@ -29,3 +29,37 @@ def test_insert_list_of_orders():
         }
     ]
     orders_repository.insert_list_of_orders(orders)
+
+@pytest.mark.skip('integration test')
+def test_select_many():
+    orders_repository = OrdersRepository(conn)
+    query = {
+        "cupom": False
+    }
+    orders = orders_repository.select_many(query)
+
+    print(f"\nOrders: {orders}")
+
+    for doc in orders:
+        print(doc)
+
+@pytest.mark.skip('integration test')
+def test_select_one():
+    orders_repository = OrdersRepository(conn)
+    query = {
+        "cupom": False
+    }
+    order = orders_repository.select_many(query)
+
+    print(f"\nOrders: {order}")
+
+    for doc in order:
+        print(doc['client'])
+
+@pytest.mark.skip('integration test')
+def test_select_many_with_properties():
+    orders_repository = OrdersRepository(conn)
+    orders = orders_repository.select_many_with_properties('')
+
+    for doc in orders:
+        print(doc)
