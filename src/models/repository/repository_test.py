@@ -63,3 +63,27 @@ def test_select_many_with_properties():
 
     for doc in orders:
         print(doc)
+
+@pytest.mark.skip('integration test')
+def test_edit_registry():
+    orders_repository = OrdersRepository(conn)
+    query = {
+        "cupom": False
+    }
+    new_values = {
+        "cupom": True
+    }
+    orders_repository.edit_registry(query, new_values)
+
+    orders = orders_repository.select_many(query)
+
+    for doc in orders:
+        print(doc)
+
+def test_delete_registry():
+    orders_repository = OrdersRepository(conn)
+    query = {
+        "cupom": False
+    }
+
+    orders_repository.delete_registry(query)

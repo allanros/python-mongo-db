@@ -34,3 +34,16 @@ class OrdersRepository:
         )
 
         return data
+
+    def edit_registry(self, query: dict, new_values: dict) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_many(
+            query,
+            {
+                "$set": new_values
+            }
+        )
+
+    def delete_registry(self, query: dict) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.delete_many(query)
