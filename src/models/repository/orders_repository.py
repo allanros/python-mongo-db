@@ -1,4 +1,6 @@
-class OrdersRepository:
+from .interfaces.orders_repository import OrdersRepositoryInterface
+
+class OrdersRepository(OrdersRepositoryInterface):
     def __init__(self, db_connection) -> None:
         self.__collection_name = "orders"
         self.__db_connection = db_connection
