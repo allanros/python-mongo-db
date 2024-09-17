@@ -1,14 +1,16 @@
+# pylint: disable=E0602
+
 import pytest
-from src.models.connection.connection_handler import DBConnectionHandler
+# from src.models.connection.connection_handler import DBConnectionHandler
 from .orders_repository import OrdersRepository
 
-db_connection_handler = DBConnectionHandler()
-db_connection_handler.connect_to_db()
-conn = db_connection_handler.get_db_connection()
+# db_connection_handler = DBConnectionHandler()
+# db_connection_handler.connect_to_db()
+# conn = db_connection_handler.get_db_connection()
 
 @pytest.mark.skip('integration test')
 def test_insert_order():
-    orders_repository = OrdersRepository(conn)
+    orders_repository = OrdersRepository(conn) # type: ignore
     order = {
         "alguma": "coisa",
         "valor": 5
@@ -17,7 +19,7 @@ def test_insert_order():
 
 @pytest.mark.skip('integration test')
 def test_insert_list_of_orders():
-    orders_repository = OrdersRepository(conn)
+    orders_repository = OrdersRepository(conn) # type: ignore
     orders = [
         {
             "alguma": "coisa",
@@ -32,7 +34,7 @@ def test_insert_list_of_orders():
 
 @pytest.mark.skip('integration test')
 def test_select_many():
-    orders_repository = OrdersRepository(conn)
+    orders_repository = OrdersRepository(conn) # type: ignore
     query = {
         "cupom": False
     }
@@ -45,7 +47,7 @@ def test_select_many():
 
 @pytest.mark.skip('integration test')
 def test_select_one():
-    orders_repository = OrdersRepository(conn)
+    orders_repository = OrdersRepository(conn) # type: ignore
     query = {
         "cupom": False
     }
@@ -58,7 +60,7 @@ def test_select_one():
 
 @pytest.mark.skip('integration test')
 def test_select_many_with_properties():
-    orders_repository = OrdersRepository(conn)
+    orders_repository = OrdersRepository(conn) # type: ignore
     orders = orders_repository.select_many_with_properties('')
 
     for doc in orders:
@@ -66,7 +68,7 @@ def test_select_many_with_properties():
 
 @pytest.mark.skip('integration test')
 def test_edit_registry():
-    orders_repository = OrdersRepository(conn)
+    orders_repository = OrdersRepository(conn) # type: ignore
     query = {
         "cupom": False
     }
@@ -80,8 +82,9 @@ def test_edit_registry():
     for doc in orders:
         print(doc)
 
+@pytest.mark.skip('integration test')
 def test_delete_registry():
-    orders_repository = OrdersRepository(conn)
+    orders_repository = OrdersRepository(conn) # type: ignore
     query = {
         "cupom": False
     }
