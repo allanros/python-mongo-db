@@ -12,6 +12,7 @@ class RegistryOrder:
             body =  http_request.body
             new_order = self.__format_new_order(body)
             self.__registry_order(new_order)
+            new_order.pop('_id')
 
             return self.__format_response(new_order)
 
