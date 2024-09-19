@@ -5,9 +5,9 @@ def registry_order_validator(body: any):
         "data": {
             "type": "dict",
             "schema": {
-                "name": {"type": "string", "required": True},
-                "address": {"type": "string", "required": True},
-                "cupom": {"type": "boolean", "required": True},
+                "name": { "type": "string", "required": True },
+                "address": { "type": "string", "required": True },
+                "cupom": { "type": "boolean", "required": False },
                 "items": {
                     "type": "list",
                     "schema": {
