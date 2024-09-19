@@ -9,11 +9,11 @@ def test_registry_order_validator():
             "cupom": False,
             "items": [
                 {
-                    "item": "item1",
+                    "item": "item23",
                     "quantity": 1
                 },
                 {
-                    "item": "item2",
+                    "item": "item2121",
                     "quantity": 2
                 }
             ]
