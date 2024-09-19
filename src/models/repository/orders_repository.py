@@ -1,3 +1,4 @@
+from bson import ObjectId
 from .interfaces.orders_repository import OrdersRepositoryInterface
 
 class OrdersRepository(OrdersRepositoryInterface):
@@ -37,7 +38,23 @@ class OrdersRepository(OrdersRepositoryInterface):
 
         return data
 
-    def edit_registry(self, query: dict, new_values: dict) -> None:
+    def select_by_object_id(self, object_id: str) -> dict:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        data = collection.find_one({ "_id": ObjectId(object_id) })
+        return data
+
+    def edit_registry(self, order_id: str, new_values: dict) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_one(
+            {
+                "_id": ObjectId(order_id)
+            },
+            {
+                "$set": new_values
+            }
+        )
+
+    def edit_many_registry(self, query: dict, new_values: dict) -> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
         collection.update_many(
             query,
