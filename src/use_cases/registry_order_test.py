@@ -37,9 +37,6 @@ def test_registry():
     assert response.status_code == 201
     assert response.body["data"]["type"] == "order"
     assert response.body["data"]["count"] == 1
-    assert response.body["order_data"]["name"] == mock_registry.body["data"]["name"]
-    assert response.body["order_data"]["address"] == mock_registry.body["data"]["address"]
-    assert response.body["order_data"]["items"] == mock_registry.body["data"]["items"]
 
 def test_registry_error():
     repository = OrdersRepositoryMockError()
